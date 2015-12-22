@@ -547,11 +547,11 @@
 
 	Webflow.define('dropdown', module.exports = function($, _) {
 	  var api = {};
-	  var tram = $.tram;
 	  var $doc = $(document);
 	  var $dropdowns;
 	  var designer;
 	  var inApp = Webflow.env();
+	  var touch = Webflow.env.touch;
 	  var namespace = '.w-dropdown';
 	  var stateOpen = 'w--open';
 	  var closeEvent = 'w-close' + namespace;
@@ -584,6 +584,7 @@
 	    data.links = data.list.children('.w-dropdown-link');
 	    data.outside = outside(data);
 	    data.complete = complete(data);
+	    data.leave = leave(data);
 
 	    // Remove old events
 	    $el.off(namespace);
@@ -601,6 +602,9 @@
 	      $el.on('setting' + namespace, handler(data));
 	    } else {
 	      data.toggle.on('tap' + namespace, toggle(data));
+	      if (data.config.hover) {
+	        data.toggle.on('mouseenter' + namespace, enter(data));
+	      }
 	      $el.on(closeEvent, handler(data));
 	      // Close in preview mode
 	      inApp && close(data);
@@ -609,8 +613,8 @@
 
 	  function configure(data) {
 	    data.config = {
-	      hover: +data.el.attr('data-hover'),
-	      delay: +data.el.attr('data-delay') || 0
+	      hover: Boolean(data.el.attr('data-hover')) && !touch,
+	      delay: Number(data.el.attr('data-delay')) || 0
 	    };
 	  }
 
@@ -632,12 +636,12 @@
 	  }
 
 	  function toggle(data) {
-	    return _.debounce(function(evt) {
+	    return _.debounce(function() {
 	      data.open ? close(data) : open(data);
 	    });
 	  }
 
-	  function open(data, immediate) {
+	  function open(data) {
 	    if (data.open) return;
 	    closeOthers(data);
 	    data.open = true;
@@ -648,6 +652,7 @@
 
 	    // Listen for tap outside events
 	    if (!designer) $doc.on('tap' + namespace, data.outside);
+	    if (data.hovering) data.el.on('mouseleave' + namespace, data.leave);
 
 	    // Clear previous delay
 	    window.clearTimeout(data.delayId);
@@ -655,12 +660,17 @@
 
 	  function close(data, immediate) {
 	    if (!data.open) return;
+
+	    // Do not close hover-based menus if currently hovering
+	    if (data.config.hover && data.hovering) return;
+
 	    data.open = false;
 	    var config = data.config;
 	    ix.outro(0, data.el[0]);
 
 	    // Stop listening for tap outside events
 	    $doc.off('tap' + namespace, data.outside);
+	    data.el.off('mouseleave' + namespace, data.leave);
 
 	    // Clear previous delay
 	    window.clearTimeout(data.delayId);
@@ -703,6 +713,20 @@
 	    };
 	  }
 
+	  function enter(data) {
+	    return function() {
+	      data.hovering = true;
+	      open(data);
+	    };
+	  }
+
+	  function leave(data) {
+	    return function() {
+	      data.hovering = false;
+	      close(data);
+	    };
+	  }
+
 	  // Export module
 	  return api;
 	});
@@ -733,6 +757,7 @@
 
 	  var api = {};
 	  var $win = $(window);
+	  var $html = $(document.documentElement);
 	  var location = document.location;
 	  var hashchange = 'hashchange';
 	  var loaded;
@@ -766,6 +791,7 @@
 	    $win.off(hashchange, checkHash);
 	    $.ajax({
 	      url: cleanSlashes(("https://editor-api.webflow.com") + '/api/editor/view'),
+	      data: { siteId: $html.attr('data-wf-site') },
 	      xhrFields: { withCredentials: true },
 	      dataType: 'json',
 	      crossDomain: true,
@@ -1141,6 +1167,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
+	/*eslint no-self-compare:0 */
 
 	/**
 	 * Webflow: Interactions
@@ -1323,11 +1350,11 @@
 
 	  function convert(offset) {
 	    if (!offset) return 0;
-	    offset = offset + '';
+	    offset = String(offset);
 	    var result = parseInt(offset, 10);
 	    if (result !== result) return 0;
 	    if (offset.indexOf('%') > 0) {
-	      result = result / 100;
+	      result /= 100;
 	      if (result >= 1) result = 0.999;
 	    }
 	    return result;
@@ -1397,16 +1424,21 @@
 	      // Find selector within element descendants, siblings, or query whole document
 	      var selector = trigger.selector;
 	      if (selector) {
-	        $el = (
-	          trigger.descend ? $el.find(selector) :
-	          trigger.siblings ? $el.siblings(selector) :
-	          $(selector)
-	        );
+	        if (trigger.descend) {
+	          $el = $el.find(selector);
+	        } else if (trigger.siblings) {
+	          $el = $el.siblings(selector);
+	        } else {
+	          $el = $(selector);
+	        }
 	        if (inApp) $el.attr('data-ix-affect', 1);
 	      }
 
 	      // Apply empty fix for certain Chrome versions
 	      if (emptyFix) $el.addClass('w-ix-emptyfix');
+
+	      // Set preserve3d for triggers with transforms
+	      if (trigger.preserve3d) $el.css('transform-style', 'preserve-3d');
 	    }
 
 	    var _tram = tram($el);
@@ -2986,7 +3018,12 @@
 	    }
 
 	    // Push new history state
-	    if (loc.hash !== hash && history && history.pushState) {
+	    if (
+	      loc.hash !== hash &&
+	      history && history.pushState &&
+	      // Navigation breaks Chrome when the protocol is `file:`.
+	      !(Webflow.env.chrome && loc.protocol === 'file:')
+	    ) {
 	      var oldHash = history.state && history.state.hash;
 	      if (oldHash !== hash) {
 	        history.pushState({ hash: hash }, '', '#' + hash);
@@ -4312,14 +4349,14 @@
  * Webflow: Interactions: Init
  */
 Webflow.require('ix').init([
-  {"slug":"title-slide-in-1","name":"Title Slide In 1","value":{"style":{"opacity":0,"x":"0px","y":"50px"},"triggers":[{"type":"scroll","stepsA":[{"wait":250},{"opacity":1,"transition":"transform 500ms ease 0ms, opacity 750ms ease 0ms","x":"0px","y":"0px"}],"stepsB":[]}]}},
-  {"slug":"title-slide-in-2","name":"Title Slide In 2","value":{"style":{"opacity":0,"x":"-50px","y":"0px"},"triggers":[{"type":"scroll","stepsA":[{"wait":750},{"opacity":1,"transition":"transform 750ms ease 0ms, opacity 750ms ease 0ms","x":"0px","y":"0px"}],"stepsB":[]}]}},
+  {"slug":"title-slide-in-1","name":"Title Slide In 1","value":{"style":{"opacity":0,"x":"0px","y":"50px"},"triggers":[{"type":"scroll","stepsA":[{"wait":250},{"opacity":1,"transition":"transform 500ms ease 0ms, opacity 750ms ease 0ms","x":"0px","y":"0px"}],"stepsB":[],"preserve3d":true}]}},
+  {"slug":"title-slide-in-2","name":"Title Slide In 2","value":{"style":{"opacity":0,"x":"-50px","y":"0px"},"triggers":[{"type":"scroll","stepsA":[{"wait":750},{"opacity":1,"transition":"transform 750ms ease 0ms, opacity 750ms ease 0ms","x":"0px","y":"0px"}],"stepsB":[],"preserve3d":true}]}},
   {"slug":"fade-in-on-scroll","name":"Fade In on Scroll","value":{"style":{"opacity":0},"triggers":[{"type":"scroll","stepsA":[{"wait":500},{"opacity":1,"transition":"opacity 750ms ease 0ms"}],"stepsB":[]}]}},
-  {"slug":"services-slide-up-1","name":"Services - Slide Up 1","value":{"style":{"opacity":0,"x":"0px","y":"100px"},"triggers":[{"type":"scroll","stepsA":[{"wait":250},{"opacity":1,"transition":"transform 750ms ease 0ms, opacity 750ms ease 0ms","x":"0px","y":"0px"}],"stepsB":[]}]}},
-  {"slug":"services-slide-up-2","name":"Services - Slide Up 2","value":{"style":{"opacity":0,"x":"0px","y":"100px"},"triggers":[{"type":"scroll","stepsA":[{"wait":750},{"opacity":1,"transition":"transform 750ms ease 0ms, opacity 750ms ease 0ms","x":"0px","y":"0px"}],"stepsB":[]}]}},
-  {"slug":"services-slide-up-3","name":"Services - Slide Up 3","value":{"style":{"opacity":0,"x":"0px","y":"100px"},"triggers":[{"type":"scroll","stepsA":[{"wait":1250},{"opacity":1,"transition":"transform 750ms ease 0ms, opacity 750ms ease 0ms","x":"0px","y":"0px"}],"stepsB":[]}]}},
+  {"slug":"services-slide-up-1","name":"Services - Slide Up 1","value":{"style":{"opacity":0,"x":"0px","y":"100px"},"triggers":[{"type":"scroll","stepsA":[{"wait":250},{"opacity":1,"transition":"transform 750ms ease 0ms, opacity 750ms ease 0ms","x":"0px","y":"0px"}],"stepsB":[],"preserve3d":true}]}},
+  {"slug":"services-slide-up-2","name":"Services - Slide Up 2","value":{"style":{"opacity":0,"x":"0px","y":"100px"},"triggers":[{"type":"scroll","stepsA":[{"wait":750},{"opacity":1,"transition":"transform 750ms ease 0ms, opacity 750ms ease 0ms","x":"0px","y":"0px"}],"stepsB":[],"preserve3d":true}]}},
+  {"slug":"services-slide-up-3","name":"Services - Slide Up 3","value":{"style":{"opacity":0,"x":"0px","y":"100px"},"triggers":[{"type":"scroll","stepsA":[{"wait":1250},{"opacity":1,"transition":"transform 750ms ease 0ms, opacity 750ms ease 0ms","x":"0px","y":"0px"}],"stepsB":[],"preserve3d":true}]}},
   {"slug":"preloader-fade-out","name":"Preloader Fade Out","value":{"style":{"display":"block","opacity":1},"triggers":[{"type":"load","preload":true,"stepsA":[{"opacity":0,"transition":"opacity 750ms ease 0ms"},{"display":"none"}],"stepsB":[]}]}},
   {"slug":"page-load-fade-in","name":"Page Load - Fade in","value":{"style":{"opacity":0},"triggers":[{"type":"load","preload":true,"stepsA":[{"opacity":1,"transition":"opacity 750ms ease 0ms"}],"stepsB":[]}]}},
-  {"slug":"portfolio-interaction","name":"Portfolio Interaction","value":{"style":{},"triggers":[{"type":"hover","selector":".white","descend":true,"stepsA":[{"transition":"transform 400ms ease 0ms","scale":1.25},{"wait":400,"transition":"transform 400ms ease 0ms","scale":1}],"stepsB":[]}]}},
+  {"slug":"portfolio-interaction","name":"Portfolio Interaction","value":{"style":{},"triggers":[{"type":"hover","selector":".white","descend":true,"stepsA":[{"transition":"transform 400ms ease 0ms","scaleX":1.25,"scaleY":1.25,"scaleZ":1},{"wait":400,"transition":"transform 400ms ease 0ms","scaleX":1,"scaleY":1,"scaleZ":1}],"stepsB":[],"preserve3d":true}]}},
   {"slug":"social-icon","name":"Social Icon","value":{"style":{},"triggers":[{"type":"hover","selector":".social-icon","descend":true,"loopA":true,"stepsA":[{"opacity":0.5,"transition":"opacity 1000ms ease 0ms"},{"opacity":1,"transition":"opacity 1000ms ease 0ms"}],"stepsB":[{"opacity":1,"transition":"opacity 500ms ease 0ms"}]}]}}
 ]);
