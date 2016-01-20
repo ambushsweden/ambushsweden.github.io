@@ -117,8 +117,8 @@ p {
   height: 85%;
   min-height: 0px;
   padding: 0px;
-  background-image: -webkit-linear-gradient(bottom, black, rgba(255, 255, 255, 0) 60%), url('../images/Ambush - Foto- Philip Truong - Bläcksquid Inc._8-min.jpg');
-  background-image: linear-gradient(to top, black, rgba(255, 255, 255, 0) 60%), url('../images/Ambush - Foto- Philip Truong - Bläcksquid Inc._8-min.jpg');
+  background-image: -webkit-linear-gradient(bottom, black, rgba(255, 255, 255, 0) 60%), url('../images/AMBUSH-hemsida-hero.jpg');
+  background-image: linear-gradient(to top, black, rgba(255, 255, 255, 0) 60%), url('../images/AMBUSH-hemsida-hero.jpg');
   background-position: 0px 0px, 50% 0px;
   background-size: auto, cover;
   background-attachment: scroll, scroll;
