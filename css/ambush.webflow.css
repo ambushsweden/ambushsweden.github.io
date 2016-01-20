@@ -114,8 +114,8 @@ p {
   height: 85%;
   min-height: 0px;
   padding: 0px;
-  background-image: -webkit-linear-gradient(bottom, black, rgba(255, 255, 255, 0) 60%), url('../images/Ambush - Foto- Philip Truong - Bläcksquid Inc._8-min.jpg');
-  background-image: linear-gradient(to top, black, rgba(255, 255, 255, 0) 60%), url('../images/Ambush - Foto- Philip Truong - Bläcksquid Inc._8-min.jpg');
+  background-image: -webkit-linear-gradient(bottom, black, rgba(255, 255, 255, 0) 60%), url('../images/Ambush---Foto--Philip-Truong---Bläcksquid-Inc.-compressor.jpg');
+  background-image: linear-gradient(to top, black, rgba(255, 255, 255, 0) 60%), url('../images/Ambush---Foto--Philip-Truong---Bläcksquid-Inc.-compressor.jpg');
   background-position: 0px 0px, 50% 0px;
   background-size: auto, cover;
   background-attachment: scroll, scroll;
@@ -668,7 +668,7 @@ p {
   left: 0px;
   top: 0px;
   right: 0px;
-  display: block;
+  display: none;
   margin-right: auto;
   margin-left: auto;
 }
@@ -723,6 +723,10 @@ p {
 
 .mrfooter {
   padding: 18px 50px;
+}
+
+.mrfooter:hover {
+  color: #a2a2a2;
 }
 
 .footer-image {
@@ -1079,10 +1083,16 @@ p {
 
 html.w-mod-js *[data-ix="title-slide-in-1"] {
   opacity: 0;
+  -webkit-transform: translate(0px, 50px);
+  -ms-transform: translate(0px, 50px);
+  transform: translate(0px, 50px);
 }
 
 html.w-mod-js *[data-ix="title-slide-in-2"] {
   opacity: 0;
+  -webkit-transform: translate(-50px, 0px);
+  -ms-transform: translate(-50px, 0px);
+  transform: translate(-50px, 0px);
 }
 
 html.w-mod-js *[data-ix="fade-in-on-scroll"] {
@@ -1091,14 +1101,23 @@ html.w-mod-js *[data-ix="fade-in-on-scroll"] {
 
 html.w-mod-js *[data-ix="services-slide-up-1"] {
   opacity: 0;
+  -webkit-transform: translate(0px, 100px);
+  -ms-transform: translate(0px, 100px);
+  transform: translate(0px, 100px);
 }
 
 html.w-mod-js *[data-ix="services-slide-up-2"] {
   opacity: 0;
+  -webkit-transform: translate(0px, 100px);
+  -ms-transform: translate(0px, 100px);
+  transform: translate(0px, 100px);
 }
 
 html.w-mod-js *[data-ix="services-slide-up-3"] {
   opacity: 0;
+  -webkit-transform: translate(0px, 100px);
+  -ms-transform: translate(0px, 100px);
+  transform: translate(0px, 100px);
 }
 
 html.w-mod-js *[data-ix="preloader-fade-out"] {
