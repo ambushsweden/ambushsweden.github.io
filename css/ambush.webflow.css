@@ -114,8 +114,8 @@ p {
   height: 85%;
   min-height: 0px;
   padding: 0px;
-  background-image: -webkit-linear-gradient(bottom, black, rgba(255, 255, 255, 0) 60%), url('../images/Ambush---Foto--Philip-Truong---Bläcksquid-Inc.-compressor.jpg');
-  background-image: linear-gradient(to top, black, rgba(255, 255, 255, 0) 60%), url('../images/Ambush---Foto--Philip-Truong---Bläcksquid-Inc.-compressor.jpg');
+  background-image: -webkit-linear-gradient(bottom, black, rgba(255, 255, 255, 0) 60%), url('../images/AMBUSH-hemsida-hero.jpg');
+  background-image: linear-gradient(to top, black, rgba(255, 255, 255, 0) 60%), url('../images/AMBUSH-hemsida-hero.jpg');
   background-position: 0px 0px, 50% 0px;
   background-size: auto, cover;
   background-attachment: scroll, scroll;
@@ -131,13 +131,13 @@ p {
 }
 
 .slide-1 {
-  background-image: url('../images/slider1.jpg');
+  background-image: url('../images/');
   background-position: 50% 0px;
   background-size: cover;
 }
 
 .slide-2 {
-  background-image: url('../images/sheep.jpeg');
+  background-image: url('../images/');
   background-position: 50% 0px;
   background-size: cover;
 }
@@ -369,7 +369,7 @@ p {
 
 .services-photo {
   height: 600px;
-  background-image: url('../images/desk2.jpeg');
+  background-image: url('../images/');
   background-position: 50% 50%;
   background-size: cover;
 }
@@ -492,7 +492,7 @@ p {
 }
 
 .slide-3 {
-  background-image: url('../images/hoop.jpg');
+  background-image: url('../images/');
   background-position: 50% 100%;
   background-size: cover;
 }
