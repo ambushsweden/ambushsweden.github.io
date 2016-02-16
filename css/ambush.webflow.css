@@ -1,6 +1,6 @@
 body {
   height: 100%;
-  background-color: black;
+  background-color: #000;
   font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
   color: #333;
   font-size: 14px;
@@ -11,7 +11,7 @@ h1 {
   margin-top: 20px;
   margin-bottom: 10px;
   font-family: Montserrat, sans-serif;
-  color: white;
+  color: #fff;
   font-size: 56px;
   line-height: 54px;
   font-weight: 700;
@@ -47,7 +47,7 @@ h4 {
   margin-top: 10px;
   margin-bottom: 10px;
   font-family: Vollkorn, serif;
-  color: white;
+  color: #fff;
   font-size: 17px;
   line-height: 22px;
   font-style: italic;
@@ -92,7 +92,7 @@ p {
   display: inline-block;
   margin-top: 30px;
   padding: 15px 35px;
-  border: 2px solid black;
+  border: 2px solid #000;
   background-color: transparent;
   -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
@@ -107,7 +107,7 @@ p {
 .button:hover {
   border-color: #878787;
   background-color: #878787;
-  color: white;
+  color: #fff;
 }
 
 .header {
@@ -117,8 +117,8 @@ p {
   height: 85%;
   min-height: 0px;
   padding: 0px;
-  background-image: -webkit-linear-gradient(bottom, black, rgba(255, 255, 255, 0) 60%), url('../images/AMBUSH-hemsida-hero.jpg');
-  background-image: linear-gradient(to top, black, rgba(255, 255, 255, 0) 60%), url('../images/AMBUSH-hemsida-hero.jpg');
+  background-image: -webkit-linear-gradient(90deg, #000, hsla(0, 0%, 100%, 0) 60%), url('../images/AMBUSH-hemsida-hero.jpg');
+  background-image: linear-gradient(0deg, #000, hsla(0, 0%, 100%, 0) 60%), url('../images/AMBUSH-hemsida-hero.jpg');
   background-position: 0px 0px, 50% 0px;
   background-size: auto, cover;
   background-attachment: scroll, scroll;
@@ -134,13 +134,13 @@ p {
 }
 
 .slide-1 {
-  background-image: url('../images/');
+  background-image: url('../images/slider1.jpg');
   background-position: 50% 0px;
   background-size: cover;
 }
 
 .slide-2 {
-  background-image: url('../images/');
+  background-image: url('../images/sheep.jpeg');
   background-position: 50% 0px;
   background-size: cover;
 }
@@ -166,13 +166,13 @@ p {
   background-color: transparent;
   -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
-  color: white;
+  color: #fff;
   font-size: 30px;
 }
 
 .right-icon:hover {
-  background-color: rgba(51, 51, 51, 0.49);
-  color: white;
+  background-color: rgba(51, 51, 51, .49);
+  color: #fff;
 }
 
 .left-icon {
@@ -187,13 +187,13 @@ p {
   background-color: transparent;
   -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
-  color: white;
+  color: #fff;
   font-size: 30px;
 }
 
 .left-icon:hover {
-  background-color: rgba(51, 51, 51, 0.49);
-  color: white;
+  background-color: rgba(51, 51, 51, .49);
+  color: #fff;
 }
 
 .navbar {
@@ -225,7 +225,7 @@ p {
   padding-left: 35px;
   float: none;
   font-family: Montserrat, sans-serif;
-  color: white;
+  color: #fff;
   font-size: 13px;
   letter-spacing: -1px;
   text-transform: uppercase;
@@ -238,7 +238,7 @@ p {
 .nav-link.w--current {
   -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
-  color: white;
+  color: #fff;
 }
 
 .nav-link.w--current:hover {
@@ -292,7 +292,7 @@ p {
   height: 475px;
   border: 1px none #017252;
   border-radius: 0px;
-  background-image: url('../images/11109025_909723189074650_8690034913171710016_o.jpg');
+  background-image: url('../images/12660378_10208589312681461_695541315_n.jpg');
   background-position: 50% 50%;
   background-size: cover;
 }
@@ -307,8 +307,8 @@ p {
   margin-bottom: 60px;
   padding: 70px 20px 50px;
   background-color: #017252;
-  background-image: -webkit-linear-gradient(bottom, black, rgba(255, 255, 255, 0)), -webkit-linear-gradient(black 1%, rgba(255, 255, 255, 0));
-  background-image: linear-gradient(to top, black, rgba(255, 255, 255, 0)), linear-gradient(black 1%, rgba(255, 255, 255, 0));
+  background-image: -webkit-linear-gradient(90deg, #000, hsla(0, 0%, 100%, 0)), -webkit-linear-gradient(270deg, #000 1%, hsla(0, 0%, 100%, 0));
+  background-image: linear-gradient(0deg, #000, hsla(0, 0%, 100%, 0)), linear-gradient(180deg, #000 1%, hsla(0, 0%, 100%, 0));
 }
 
 .contact {
@@ -360,7 +360,7 @@ p {
 
 .footer-text {
   margin-top: 0px;
-  color: white;
+  color: #fff;
   line-height: 28px;
 }
 
@@ -372,20 +372,19 @@ p {
 
 .services-photo {
   height: 600px;
-  background-image: url('../images/');
+  background-image: url('../images/desk2.jpeg');
   background-position: 50% 50%;
   background-size: cover;
 }
 
 .services-1 {
-  overflow-x: hidden;
-  overflow-y: hidden;
+  overflow: hidden;
   height: auto;
   min-height: 400px;
   padding-top: 40px;
   padding-right: 50px;
   padding-left: 50px;
-  background-color: whitesmoke;
+  background-color: #f5f5f5;
   -webkit-transition: all 750ms ease;
   transition: all 750ms ease;
   text-align: center;
@@ -394,10 +393,6 @@ p {
 .services-1:hover {
   background-color: #e3e1d3;
   background-image: none;
-  background-position: 0% 0%;
-  background-size: auto;
-  background-repeat: repeat;
-  background-attachment: scroll;
 }
 
 .services-2 {
@@ -406,7 +401,7 @@ p {
   padding-top: 40px;
   padding-right: 50px;
   padding-left: 50px;
-  background-color: whitesmoke;
+  background-color: #f5f5f5;
   -webkit-transition: all 750ms ease;
   transition: all 750ms ease;
   text-align: center;
@@ -415,10 +410,6 @@ p {
 .services-2:hover {
   background-color: #e0cece;
   background-image: none;
-  background-position: 0% 0%;
-  background-size: auto;
-  background-repeat: repeat;
-  background-attachment: scroll;
 }
 
 .services-3 {
@@ -427,7 +418,7 @@ p {
   padding-top: 40px;
   padding-right: 50px;
   padding-left: 50px;
-  background-color: whitesmoke;
+  background-color: #f5f5f5;
   -webkit-transition: all 750ms ease;
   transition: all 750ms ease;
   text-align: center;
@@ -436,10 +427,6 @@ p {
 .services-3:hover {
   background-color: #d1d7e0;
   background-image: none;
-  background-position: 0% 0%;
-  background-size: auto;
-  background-repeat: repeat;
-  background-attachment: scroll;
 }
 
 .break---quotes {
@@ -449,7 +436,7 @@ p {
 
 .quote-slider {
   height: 100px;
-  background-color: white;
+  background-color: #fff;
 }
 
 .quote-1 {
@@ -471,7 +458,7 @@ p {
 }
 
 .footer-link {
-  color: white;
+  color: #fff;
   text-decoration: underline;
 }
 
@@ -482,7 +469,7 @@ p {
   width: 100%;
   height: 100%;
   padding-top: 275px;
-  background-color: whitesmoke;
+  background-color: #f5f5f5;
   text-align: center;
 }
 
@@ -495,7 +482,7 @@ p {
 }
 
 .slide-3 {
-  background-image: url('../images/');
+  background-image: url('../images/hoop.jpg');
   background-position: 50% 100%;
   background-size: cover;
 }
@@ -528,7 +515,7 @@ p {
   width: 100%;
   height: 100%;
   padding: 20px;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, .8);
   opacity: 0;
   -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
@@ -543,13 +530,13 @@ p {
   -webkit-transform: none;
   -ms-transform: none;
   transform: none;
-  color: white;
+  color: #fff;
 }
 
 .portfolio-inner {
   height: 100%;
   padding-top: 40%;
-  border: 1px solid white;
+  border: 1px solid #fff;
 }
 
 .navbar2 {
@@ -557,9 +544,9 @@ p {
   border-width: 4px;
   border-color: #003828;
   border-radius: 0px;
-  background-color: black;
-  background-image: -webkit-linear-gradient(10deg, transparent, rgba(1, 114, 82, 0.09)), -webkit-linear-gradient(175deg, transparent, rgba(1, 115, 83, 0.09));
-  background-image: linear-gradient(80deg, transparent, rgba(1, 114, 82, 0.09)), linear-gradient(275deg, transparent, rgba(1, 115, 83, 0.09));
+  background-color: #000;
+  background-image: -webkit-linear-gradient(10deg, transparent, rgba(1, 114, 82, .15)), -webkit-linear-gradient(175deg, transparent, rgba(1, 115, 83, .15));
+  background-image: linear-gradient(80deg, transparent, rgba(1, 114, 82, .15)), linear-gradient(275deg, transparent, rgba(1, 115, 83, .15));
 }
 
 .navbar2:focus {
@@ -591,8 +578,8 @@ p {
 }
 
 .navbar-text:hover {
-  color: white;
-  text-shadow: white 1px 1px 14px;
+  color: #fff;
+  text-shadow: 1px 1px 14px #fff;
 }
 
 .navbar-text.w--current {
@@ -600,7 +587,7 @@ p {
 }
 
 .navbar-text.w--current:active {
-  color: white;
+  color: #fff;
 }
 
 .navbar-text.w--current:focus {
@@ -621,18 +608,18 @@ p {
 }
 
 .livebildtext {
-  border-bottom: 1px none black;
-  color: white;
+  border-bottom: 1px none #000;
+  color: #fff;
   font-size: 104px;
   font-weight: 500;
   text-align: center;
   letter-spacing: 5px;
-  text-shadow: black 1px 1px 6px, black -1px 1px 6px;
+  text-shadow: 1px 1px 6px #000, -1px 1px 6px #000;
 }
 
 .aboutheader {
-  background-image: -webkit-linear-gradient(bottom, black, transparent 98%), url('../images/11206794_1585811541691005_4499298731786825067_o.jpg');
-  background-image: linear-gradient(to top, black, transparent 98%), url('../images/11206794_1585811541691005_4499298731786825067_o.jpg');
+  background-image: -webkit-linear-gradient(90deg, #000, transparent 98%), url('../images/11206794_1585811541691005_4499298731786825067_o.jpg');
+  background-image: linear-gradient(0deg, #000, transparent 98%), url('../images/11206794_1585811541691005_4499298731786825067_o.jpg');
   background-position: 0px 0px, 50% 0px;
   background-size: auto, cover;
 }
@@ -643,8 +630,8 @@ p {
 }
 
 .headertitle {
-  box-shadow: black 0px 1px 0px 0px;
-  text-shadow: black 1px 1px 6px, black -1px 1px 6px;
+  box-shadow: 0 1px 0 0 #000;
+  text-shadow: 1px 1px 6px #000, -1px 1px 6px #000;
 }
 
 .secondaryheadingtitle {
@@ -655,7 +642,7 @@ p {
   margin: 5px 42%;
   padding-bottom: 10px;
   border-bottom: 4px solid #017252;
-  box-shadow: black 0px 1px 0px 0px;
+  box-shadow: 0 1px 0 0 #000;
   font-family: 'Six Caps', sans-serif;
   color: #d5d5d5;
   font-size: 93px;
@@ -663,7 +650,7 @@ p {
   font-weight: 400;
   text-align: center;
   letter-spacing: 2px;
-  text-shadow: black 1px 1px 6px, black -1px 1px 6px;
+  text-shadow: 1px 1px 6px #000, -1px 1px 6px #000;
 }
 
 .logga {
@@ -714,7 +701,7 @@ p {
   margin-bottom: 0px;
   padding-bottom: 0px;
   font-family: 'Source Sans Pro', sans-serif;
-  color: white;
+  color: #fff;
   font-size: 15px;
   line-height: 28px;
   text-align: center;
@@ -837,23 +824,23 @@ p {
 }
 
 .albumsheader {
-  background-image: -webkit-linear-gradient(bottom, black, transparent 99%), url('../images/10380633_259375380917225_1396854770784369450_o.jpg');
-  background-image: linear-gradient(to top, black, transparent 99%), url('../images/10380633_259375380917225_1396854770784369450_o.jpg');
+  background-image: -webkit-linear-gradient(90deg, #000, transparent 99%), url('../images/10380633_259375380917225_1396854770784369450_o.jpg');
+  background-image: linear-gradient(0deg, #000, transparent 99%), url('../images/10380633_259375380917225_1396854770784369450_o.jpg');
   background-position: 0px 0px, 50% -51px;
   background-size: auto, cover;
 }
 
 .membersheader {
   height: auto;
-  background-image: -webkit-linear-gradient(bottom, black, transparent), url('../images/12414396_10208207437214813_242709807_o.jpg');
-  background-image: linear-gradient(to top, black, transparent), url('../images/12414396_10208207437214813_242709807_o.jpg');
+  background-image: -webkit-linear-gradient(90deg, #000, transparent), url('../images/12414396_10208207437214813_242709807_o.jpg');
+  background-image: linear-gradient(0deg, #000, transparent), url('../images/12414396_10208207437214813_242709807_o.jpg');
   background-position: 0px 0px, 50% -210px;
   background-size: auto, cover;
 }
 
 .mediaheader {
-  background-image: -webkit-linear-gradient(bottom, black, transparent), url('../images/jag och uffe.jpg');
-  background-image: linear-gradient(to top, black, transparent), url('../images/jag och uffe.jpg');
+  background-image: -webkit-linear-gradient(90deg, #000, transparent), url('../images/jag och uffe.jpg');
+  background-image: linear-gradient(0deg, #000, transparent), url('../images/jag och uffe.jpg');
   background-position: 0px 0px, 50% -55px;
   background-size: auto, cover;
 }
@@ -884,8 +871,7 @@ p {
   bottom: 365px;
   z-index: 1000;
   display: block;
-  overflow-x: visible;
-  overflow-y: visible;
+  overflow: visible;
   margin-right: auto;
   margin-left: auto;
   opacity: 0.95;
@@ -988,14 +974,14 @@ p {
 }
 
 .contactheader {
-  background-image: -webkit-linear-gradient(bottom, black, transparent), url('../images/11194394_1585811558357670_2241068619067486314_o.jpg');
-  background-image: linear-gradient(to top, black, transparent), url('../images/11194394_1585811558357670_2241068619067486314_o.jpg');
-  background-position: 0px 0px, 50% -90px;
+  background-image: -webkit-linear-gradient(90deg, #000, transparent), url('../images/FritzonAmbush.jpg');
+  background-image: linear-gradient(0deg, #000, transparent), url('../images/FritzonAmbush.jpg');
+  background-position: 0px 0px, 50% -188px;
   background-size: auto, cover;
 }
 
 .linkfooter {
-  color: white;
+  color: #fff;
 }
 
 .socialfooter {
@@ -1004,7 +990,7 @@ p {
 
 .merchknapp {
   margin: 25px 0px 75px;
-  border: 1px solid black;
+  border: 1px solid #000;
   border-radius: 65px;
   background-color: #003828;
   font-size: 14px;
@@ -1014,7 +1000,7 @@ p {
 .merchknapptext {
   margin: 20px 45px;
   font-family: 'Source Sans Pro', sans-serif;
-  color: white;
+  color: #fff;
   font-size: 15px;
   text-decoration: none;
   list-style-type: disc;
@@ -1028,15 +1014,15 @@ p {
 }
 
 .merchheader {
-  background-image: -webkit-linear-gradient(bottom, black, transparent), url('../images/11157553_1585811631690996_7836186960288846985_o.jpg');
-  background-image: linear-gradient(to top, black, transparent), url('../images/11157553_1585811631690996_7836186960288846985_o.jpg');
+  background-image: -webkit-linear-gradient(90deg, #000, transparent), url('../images/11157553_1585811631690996_7836186960288846985_o.jpg');
+  background-image: linear-gradient(0deg, #000, transparent), url('../images/11157553_1585811631690996_7836186960288846985_o.jpg');
   background-position: 0px 0px, 0px -88px;
   background-size: auto, cover;
 }
 
 .showsheader {
-  background-image: -webkit-linear-gradient(bottom, black, transparent), url('../images/11212741_10206566852281215_9155838814849040523_o.jpg');
-  background-image: linear-gradient(to top, black, transparent), url('../images/11212741_10206566852281215_9155838814849040523_o.jpg');
+  background-image: -webkit-linear-gradient(90deg, #000, transparent), url('../images/11212741_10206566852281215_9155838814849040523_o.jpg');
+  background-image: linear-gradient(0deg, #000, transparent), url('../images/11212741_10206566852281215_9155838814849040523_o.jpg');
   background-position: 0px 0px, 50% -122px;
   background-size: auto, cover;
 }
@@ -1061,7 +1047,7 @@ p {
 .merchdiv {
   border-style: none;
   border-top-width: 1px;
-  border-top-color: black;
+  border-top-color: #000;
   opacity: 0.16;
 }
 
@@ -1178,7 +1164,7 @@ html.w-mod-js *[data-ix="page-load-fade-in"] {
     margin-right: 0px;
     margin-left: 0px;
     padding-top: 100px;
-    background-color: white;
+    background-color: #fff;
     text-align: center;
   }
   .menu-button {
@@ -1193,7 +1179,7 @@ html.w-mod-js *[data-ix="page-load-fade-in"] {
     background-color: transparent;
   }
   .nav-icon {
-    color: white;
+    color: #fff;
   }
   .nav-link {
     color: #333;
@@ -1270,7 +1256,7 @@ html.w-mod-js *[data-ix="page-load-fade-in"] {
   }
   .colour {
     padding: 10px;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, .4);
     opacity: 1;
   }
   .portfolio-inner {
@@ -1331,6 +1317,9 @@ html.w-mod-js *[data-ix="page-load-fade-in"] {
   }
   .membersheader {
     background-position: 0px 0px, 0px -87px;
+  }
+  .contactheader {
+    background-position: 0px 0px, 50% 0px;
   }
 }
 
@@ -1455,7 +1444,7 @@ html.w-mod-js *[data-ix="page-load-fade-in"] {
   }
   .colour {
     padding: 20px;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, .4);
     opacity: 1;
   }
   .navbar2 {
@@ -1465,19 +1454,22 @@ html.w-mod-js *[data-ix="page-load-fade-in"] {
     right: 0px;
   }
   .navbar-text {
+    line-height: 5px;
     text-align: center;
   }
   .navbar-text.w--current {
     color: #017252;
+    line-height: 5px;
   }
   .navbar-text.w--current:focus {
     color: #017252;
   }
   .navbar-div {
+    height: 100%;
     border-style: none solid solid;
     border-width: 2px;
     border-color: #003828;
-    background-color: black;
+    background-color: #000;
   }
   .aboutheader {
     margin-top: 55px;
@@ -1519,7 +1511,7 @@ html.w-mod-js *[data-ix="page-load-fade-in"] {
     background-position: 0px 0px, 50% 0px;
   }
   .hamburger {
-    color: white;
+    color: #fff;
   }
   .hamburgertext {
     display: none;
@@ -1584,7 +1576,7 @@ html.w-mod-js *[data-ix="page-load-fade-in"] {
     padding-right: 10px;
   }
   .nav-icon {
-    color: white;
+    color: #fff;
   }
   .about {
     padding-top: 0px;
@@ -1654,7 +1646,7 @@ html.w-mod-js *[data-ix="page-load-fade-in"] {
   }
   .colour {
     padding: 10px;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, .4);
     opacity: 1;
   }
   .white {
